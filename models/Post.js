@@ -51,7 +51,7 @@ const postSchema = new mongoose.Schema(
  * Generate unique slug from title
  */
 postSchema.pre("save", async function (next) {
-  if (!this.isModified("title")) return next();
+  if (!this.isModified("title")) return ;//next();
 
   const baseSlug = slugify(this.title, {
     lower: true,
