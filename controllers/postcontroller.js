@@ -147,8 +147,8 @@ exports.getPublicPosts = async (req, res) => {
         }
         else{
             filters.$or = [
-                { status: 'public' },
-                { author: req.user.id },
+                { status: 'published' },
+                { author: user.id },
               ]
         }
         /* if (status) {
@@ -194,6 +194,7 @@ exports.getPublicPosts = async (req, res) => {
     }
   
     const skip = (page - 1) * limit;
+    console.log(filters)
   
     const posts = await Post.find(filters)
       .sort({ createdAt: -1 })

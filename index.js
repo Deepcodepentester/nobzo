@@ -9,6 +9,7 @@ const optionalauth = require("./middleware/optionalAuth")
 const posts = require("./controllers/postcontroller")
 const isAuthor= require("./middleware/isauthor")
 const cookieParser= require("cookie-parser")
+const errorHandler = require('./errorHandler')
 require("dotenv").config()
 const app = express();
 //app.use(cors());
@@ -29,7 +30,13 @@ app.use('/api/auth',authRouter);
   app.get("/posts/:slug",auth, posts.getPostBySlug);
   app.put("/posts/:id", auth, isAuthor, posts.updatePost);
   app.delete("/posts/:id", auth, isAuthor, posts.deletePost);
-  app.get('/posts',optionalauth,posts.getPosts)
+  app.get('/posts',optionalauth,posts.getPosts);
+
+  app.use(errorHandler)
+
+  app.use((req, res, next) => {
+    res.status(404).send(`${req.originalUrl} -Not Found `);
+  });
 
   
 
