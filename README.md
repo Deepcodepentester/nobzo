@@ -86,11 +86,12 @@ POST /api/auth/login
 /posts/:id  
 ● DELETE - Soft delete (author only) 
 /posts/:id 
-
+```
 Filtering  
 GET /api/posts support filtering in the query parameters e.g: GET /api/posts?page=2&limit=5&search=node
 ● page, limit 
 ● search (title or content) 
 ● tag 
 ● author 
-● status (authenticated users only) 
+● status (authenticated users only)
+```
