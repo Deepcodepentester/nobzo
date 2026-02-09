@@ -167,6 +167,10 @@ exports.getPublicPosts = async (req, res) => {
         } */
       
     } else{
+      //filtering by status is for authenticated users
+        if (status) {
+          return res.sendStatus(403)
+        }
         filters.status = "published";
     }
     /* else if (status) {

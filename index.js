@@ -35,7 +35,7 @@ app.use('/api/auth',authRouter);
   app.use(errorHandler)
 
   app.use((req, res, next) => {
-    res.status(404).send(`${req.originalUrl} -Not Found `);
+    res.status(404).json(`${req.originalUrl} -Not Found `);
   });
 
   
